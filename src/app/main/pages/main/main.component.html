@@ -1,0 +1,66 @@
+<header class="header">
+    <div class="row row-header">
+        <div class="col-6 col-sm-6 col-md-4">
+            <button type="button" class="button-menu hamburguer" (click)="mostrar()">
+                <span class="ico-menu material-symbols-outlined">menu</span>
+            </button>
+            <button type="button" class="contenedor-logo" (click)="goToHome()">
+                <img class="contenedor-logo__logo"  src="./../../../../assets/fruits.png" alt="Fruits">
+            </button>
+        </div>
+        <div class="hamburguer col-6 col-sm-6">
+            <button type="button" class="button-menu">
+                <span class="ico-menu material-symbols-outlined">shopping_cart</span>
+            </button>
+        </div>
+        <!-- NAV WEB (CANVAS)-->
+        <div class="nav col-12 col-md-4">
+            <span>Frutas</span>
+            <span>Jugos</span>
+            <span>Mis compras</span>
+        </div>
+        <div class="nav col-12 col-md-4">
+            <span>shopping cart</span>
+            <span>profile</span>
+        </div>
+        <!-- NAV MOVIL (CANVAS) -->
+        <nav class="off-canvas-menu" *ngIf="showNav">
+            <div class="off-canvas-menu-header">
+                <button type="button" class="button-menu" (click)="mostrar()">
+                    <span class="ico-menu material-symbols-outlined">close</span>
+                </button>
+                <div>
+                    <p class="nombre">Mauricio Carmen</p>
+                    <span class="contenedor-imagen">
+                        <img class="image" src="./../../../../assets/perfil.jfif" alt="Perfil">
+                    </span>
+                </div>
+            </div>
+            <div class="off-canvas-menu-container">
+                <a routerLink="./fruits" class="off-canvas-link" *ngIf="showLinkClient">
+                    <i class="fa-solid fa-lemon"></i>
+                    Frutas
+                </a>
+                <a routerLink="./juices" class="off-canvas-link" *ngIf="showLinkClient">
+                    <i class="fa-solid fa-blender"></i>
+                    Jugos
+                </a>
+                <a routerLink="./myorders" class="off-canvas-link" *ngIf="showLinkClient">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Mis Compras
+                </a>
+                <a routerLink="./sales" class="off-canvas-link" *ngIf="showLinkAdmin">
+                    <i class="fa-solid fa-dollar-sign"></i>
+                    Mis ventas
+                </a>    
+                <a routerLink="/login" class="off-canvas-link">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Salir
+                </a>
+            </div>
+        </nav>
+    </div>
+</header>
+<div class="content">
+    <router-outlet></router-outlet>
+</div>

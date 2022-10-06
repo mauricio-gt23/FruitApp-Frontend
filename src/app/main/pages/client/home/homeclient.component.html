@@ -1,0 +1,26 @@
+<div class="contenedor">
+    <p>Bienvenido <b>Mauricio</b>,</p>
+    <div class="contenedor-items">
+        <h2 class="titulo">TENEMOS NUEVAS FRUTAS</h2>
+        <swiper [config]="config">
+                <ng-template swiperSlide>
+                    <p class="fruta">Kiwi</p>
+                    <span class="contenedor-imagen">
+                        <img class="image" src="./../../../../assets/Kiwi.png" alt="Kiwi">
+                    </span>
+                </ng-template>
+                <ng-template swiperSlide>
+                    <p class="fruta">Platano</p>
+                    <span class="contenedor-imagen">
+                        <img class="image" src="./../../../../assets/Platano.png" alt="Platano">
+                    </span>
+                </ng-template>
+                <ng-template swiperSlide>
+                    <p class="fruta">Arandano</p>
+                    <span class="contenedor-imagen">
+                        <img class="image" src="./../../../../assets/Arandano.png" alt="Arandano">
+                    </span>
+                </ng-template>
+        </swiper>   
+    </div>
+</div>

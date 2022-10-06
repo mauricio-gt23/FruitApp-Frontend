@@ -1,0 +1,305 @@
+/* HEADER */
+.header {
+    height: 9vh;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+}
+
+.head {
+    width: 100%;
+    height: 9vh;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+[id] {
+    scroll-margin-top: 7ex; /* necesario que sea 'ex' */
+}
+
+.logo {
+    height: inherit;
+    margin: 0 calc(0.5rem + 0.1vw);
+    margin-top: calc(0.4rem + 1vh);
+}
+
+.a-login {
+    margin: 0 calc(0.5rem + 0.1vw);
+    margin-top: 1vh;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+.icon-login {
+    height: 100%;
+    font-size: 5vh;
+    font-weight: bold;
+    --animate-duration: 4s;
+}
+
+.nav {
+    width: 100%;
+    height: 6vh;
+    position: absolute;
+    top: 9vh;
+    background-color: black;
+    display: none;
+}
+
+.nav-container {
+    width: 100%;
+    height: inherit;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav-container a {
+    font-family: 'Tiro Bangla', serif;
+    text-decoration: none;
+    font-size: 4vh;
+}
+
+/* nav */
+.off-canvas-btn {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 1rem;
+    z-index: 999;
+    width: 2.8rem;
+    height: 2.8rem;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.off-canvas-burger {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 1rem;
+    z-index: 998;
+    width: 2.8rem;
+    height: .6rem;
+    background-color: black;
+    border-radius: 0.3rem;
+    transform: rotate(0deg) translate(0, -1.2rem);
+    transform-origin: top left;
+    transition: transform .5s ease, background-color 500ms ease;
+}
+
+.off-canvas-burger::before,
+.off-canvas-burger::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: .6rem;
+    background-color: black;
+    border-radius: 0.3rem;
+    transition: transform 500ms ease;
+}
+
+.off-canvas-burger::before {
+    transform: rotate(0deg) translate(0, -0.9rem);
+}
+
+.off-canvas-burger::after {
+    transform: rotate(0deg) translate(0, 0.3rem);
+}
+
+.off-canvas-btn:checked + .off-canvas-burger {
+    background-color: transparent;
+}
+
+.off-canvas-btn:checked + .off-canvas-burger::before {
+    transform: rotate(45deg) translate(0, 0);
+}
+
+.off-canvas-btn:checked + .off-canvas-burger::after {
+    transform: rotate(-45deg) translate(.4rem, -0.5rem);
+}
+
+.off-canvas-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 997;
+    background-color: #0008;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 500ms ease-in-out;
+    transform: translate(100%, 0);
+}
+
+.off-canvas-btn:checked ~ .off-canvas-menu {
+    transform: translate(0, 0);
+}
+
+.off-canvas-menu-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.off-canvas-link {
+    border-bottom: thin solid #82DC16;
+    padding: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 300ms ease;
+}
+
+.off-canvas-link:first-child {
+    border-top: thin solid #82DC16;
+}
+
+.off-canvas-link:hover {
+    background-color: #539208;
+}
+
+
+
+/* SECCION 1 */
+.section1-bg {
+    background-image: url('./../../../../assets/FondoFruits.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.section1-bg div {
+    background-color: rgba(0,0,0,0.38);
+}
+
+.div-fruits {
+    min-height: 58vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.section1-text-title {
+    margin: 0;
+    color: white;
+    font-size: 8vw;
+    font-weight: bold;
+    font-family: 'Tiro Bangla', serif;
+}
+
+.section1-text {
+    margin: 0.5vh 0;
+    color: white;
+    font-size: 4vw;
+    font-weight: bold;
+    font-family: 'Tiro Bangla', serif;
+}
+
+/* SECCION 2 3*/
+.section2-bg {
+    background-color: #F9C74F;
+}
+
+.section2-bg p, h2{
+    font-weight: bold;
+    font-family: 'Tiro Bangla', serif;
+}
+
+
+
+.section23-content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.section23-title {
+    margin: 5vw 0;
+    font-size: 10vw;
+    font-family: 'Raleway', sans-serif;
+}
+
+.section23-body {
+    margin: 0;
+    padding: 0 5vw;
+    font-size: calc(0.9rem + 1.5vw);
+    text-align: justify;
+    color: rgba(16, 14, 14, 0.533);
+}
+
+.section2-image {
+    width: 16rem;
+    height: auto;
+}
+
+.section3-bg {
+    background-color: #F0C4D1;
+}
+
+.section3-bg p, h2{
+    font-weight: bold;
+    font-family: 'Tiro Bangla', serif;
+}
+
+.fruit {
+    text-align: center;
+}
+
+.section3-image {
+    width: 14rem;
+    height: 14rem;
+    border: 3px solid #42036D;
+    border-radius: 5%;
+    box-shadow: 1px 1px 9px 2px #590B8F, -1px -1px 9px 2px #590B8F;
+}
+
+/* FOOTER */
+.foter {
+    background-color: black;
+    text-align: center;
+    color: white;
+}
+
+.foter p {
+    margin: 0;
+    font-size: calc(0.75rem + 1vh);
+    font-family: 'Tiro Bangla', serif;
+}
+
+.footer-name {
+    text-decoration: none;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 30em) {
+
+    .header {
+        height: 15vh;
+    }
+
+    .off-canvas-btn {
+        display: none;
+    }
+    .off-canvas-burger {
+        display: none;
+    }
+
+    .nav {
+        display: block;
+    }
+
+    .div-fruits {
+        min-height: 100vh;
+    }
+
+}

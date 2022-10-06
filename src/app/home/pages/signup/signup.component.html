@@ -1,0 +1,81 @@
+<div class="signup-bg">
+    <div>
+        <div class="cont">
+            <div>
+                <div style="text-align: center;">
+                    <img class="logo" src="./../../../../assets/fruits.png" alt="Fruits">
+                    <h3 class="subtitle">Registrarse</h3>
+                </div>
+                <form (ngSubmit)="signup()" class="form-signup" autocomplete="off" [formGroup]="miFormulario">
+                    <div class="row w-100 gap-3 gap-sm-0">
+                        <!-- Nombre -->
+                        <div class="pl-pr mb-sm-3 col-12 col-sm-6 col-md-6 col-lg-6">
+                            <label class="form-label" for="nombre">Nombre: </label>
+                            <div>
+                                <input formControlName="nombre" type="text" id="nombre" class="form-input-basic">
+                                <br>
+                                <span class="form-span" *ngIf="campoNoEsValido('nombre')">Escribir Nombre</span>
+                            </div>
+                        </div>
+                        <!-- Apellido -->
+                        <div class="pl-pr mb-sm-3 col-12 col-sm-6 col-md-6 col-lg-6">
+                            <label class="form-label" for="apellido">Apellido: </label>
+                            <div>
+                                <input formControlName="apellido" type="text" id="apellido" class="form-input-basic">
+                                <br>
+                                <span class="form-span" *ngIf="campoNoEsValido('apellido')">Escribir Apellido</span>
+                            </div>
+                        </div>                    
+                        <!-- EMAIL -->
+                        <div class="pl-pr mb-sm-3 col-12 col-sm-6 col-md-6 col-lg-6">
+                            <label class="form-label" for="email">Email: </label>
+                            <div style="position: relative;">
+                                <span class="material-symbols-outlined icon-span">mail</span>
+                                <hr>
+                                <input formControlName="email" type="email" id="email" class="form-input-medium">
+                            </div>
+                            <span class="form-span" *ngIf="campoNoEsValido('email')">Escribir Email</span>
+                        </div>
+                        <!-- Numero -->
+                        <div class="pl-pr mb-sm-3 col-12 col-sm-6 col-md-6 col-lg-6">
+                            <label class="form-label" for="numero">Número Celular: </label>
+                            <div style="position: relative;">
+                                <span class="material-symbols-outlined icon-span">phone</span>
+                                <hr>
+                                <input formControlName="numero" type="tel" id="numero" class="form-input-medium">
+                            </div>
+                            <span class="form-span" *ngIf="campoNoEsValido('numero')">Escribir Número</span>
+                        </div>
+                        <!-- Ubicacion -->
+                        <div class="pl-pr mb-sm-3 col-12 col-sm-6 col-md-6 col-lg-6">
+                            <label class="form-label" for="ubicacion">Ubicación: </label>
+                            <div style="position: relative;">
+                                <span class="material-symbols-outlined icon-span">home_pin</span>
+                                <hr>
+                                <input formControlName="ubicacion" type="text" id="ubicacion" class="form-input-medium">
+                            </div>
+                            <span class="form-span" *ngIf="campoNoEsValido('ubicacion')">Escribir Ubicación</span>
+                        </div>
+                        <!-- Contraseña -->
+                        <div class="pl-pr mb-sm-3 col-12 col-sm-6 col-md-6 col-lg-6">
+                            <label class="form-label" for="contraseña">Contraseña: </label>
+                            <div style="position: relative;">
+                                <span class="material-symbols-outlined icon-span">lock</span>
+                                <hr>
+                                <input formControlName="contraseña" [type]="hide ? 'password' : 'text'" id="contraseña" class="form-input-hard">
+                                <button type="button" class="button-vis" (click)="hide = !hide">
+                                    <span class="material-symbols-outlined">{{hide ? 'visibility' : 'visibility_off'}}</span>
+                                </button>
+                            </div>
+                            <span class="form-span" *ngIf="campoNoEsValido('contraseña')">Escribir Contraseña</span>
+                        </div>
+                    </div>
+                    <div *ngIf="showMessage">
+                        <p class="form-span-alert">Completar todos los campos</p>
+                    </div>
+                    <button type="submit" class="form-button">Registrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

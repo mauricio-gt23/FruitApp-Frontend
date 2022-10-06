@@ -1,0 +1,42 @@
+<div class="login-bg">
+    <div>
+        <div class="cont">
+            <div>
+                <div style="text-align: center;">
+                    <img class="logo" src="./../../../../assets/fruits.png" alt="Fruits">
+                    <h3 class="subtitle">Iniciar Sesión</h3>
+                </div>
+                <form method="POST" class="form-login" autocomplete="off" #miFormulario="ngForm" (ngSubmit)="login()">
+                    <div>
+                        <label class="form-label" for="email">Correo Electrónico: </label>
+                        <div style="position: relative;">
+                            <span class="material-symbols-outlined icon-span">mail</span>
+                            <hr>
+                            <input ngModel id="email" name="email" type="email" class="form-input-email" required email>
+                        </div>
+                        <span class="form-span" *ngIf="miFormulario.controls['email'].invalid && miFormulario.controls['email'].touched">Correo Inválido</span>
+                    </div>
+                    <div>
+                        <label class="form-label" for="password">Contraseña: </label>
+                        <div style="position: relative;">
+                            <span class="material-symbols-outlined icon-span">lock</span>
+                            <hr>
+                            <input ngModel id="password" name="password" [type]="hide ? 'password' : 'text'" class="form-input-password" required>
+                            <button type="button" class="button-vis" (click)="hide = !hide">
+                                <span class="material-symbols-outlined">{{hide ? 'visibility' : 'visibility_off'}}</span>
+                            </button>
+                        </div>
+                        <span class="form-span" *ngIf="miFormulario.controls['password'].invalid && miFormulario.controls['password'].touched">Contraseña requerida</span>
+                    </div>
+                    <div *ngIf="showMessage">
+                        <p class="form-span-alert">Correo o contraseña incorrecto</p>
+                    </div>
+                    <button type="submit" class="form-button">Ingresar</button>
+                    <p class="form-p">No tienes cuenta? 
+                        <a href="/signup"> Registrate </a> 
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
