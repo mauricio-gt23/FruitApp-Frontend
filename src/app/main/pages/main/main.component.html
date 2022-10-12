@@ -1,15 +1,15 @@
 <header class="header">
     <div class="row row-header">
         <div class="col-6 col-sm-6 col-md-4">
-            <button type="button" class="button-menu hamburguer" (click)="mostrar()">
+            <button type="button" class="button-menu hamburguer" (click)="show()">
                 <span class="ico-menu material-symbols-outlined">menu</span>
             </button>
             <button type="button" class="contenedor-logo" (click)="goToHome()">
                 <img class="contenedor-logo__logo"  src="./../../../../assets/fruits.png" alt="Fruits">
             </button>
         </div>
-        <div class="hamburguer col-6 col-sm-6">
-            <button type="button" class="button-menu">
+        <div class="hamburguer col-6 col-sm-6" *ngIf="showShoppingCart">
+            <button type="button" class="button-menu" (click)="goToBuy()">
                 <span class="ico-menu material-symbols-outlined">shopping_cart</span>
             </button>
         </div>
@@ -26,11 +26,11 @@
         <!-- NAV MOVIL (CANVAS) -->
         <nav class="off-canvas-menu" *ngIf="showNav">
             <div class="off-canvas-menu-header">
-                <button type="button" class="button-menu" (click)="mostrar()">
+                <button type="button" class="button-menu" (click)="show()">
                     <span class="ico-menu material-symbols-outlined">close</span>
                 </button>
                 <div>
-                    <p class="nombre">Mauricio Carmen</p>
+                    <p class="nombre">{{ user.name }} {{ user.lastName }} </p>
                     <span class="contenedor-imagen">
                         <img class="image" src="./../../../../assets/perfil.jfif" alt="Perfil">
                     </span>
@@ -53,7 +53,7 @@
                     <i class="fa-solid fa-dollar-sign"></i>
                     Mis ventas
                 </a>    
-                <a routerLink="/login" class="off-canvas-link">
+                <a class="off-canvas-link" (click)="logOut()">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     Salir
                 </a>

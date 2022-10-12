@@ -151,6 +151,69 @@ hr {
     font-size: calc(0.75rem + 0.5vw);
 }
 
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 997;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0008;
+    opacity: 1;
+}
+
+.modal-container {
+    position: relative;
+    width: 70%;
+    height: 30vh;
+    border: 4px solid #DD9C31;
+    border-radius: 1rem;
+    padding: 2rem;
+    background-color: rgb(150, 145, 145);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    line-height: 1.2;
+}
+
+.modal-close {
+    font-size: calc(0.8rem + 1vw);
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2rem;
+    height: 2rem;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 25%;
+    background-color: #B3802B;
+    transition: background-color 300ms linear, transform 300ms ease-in-out;
+}
+
+.modal-close:hover {
+    transform: scale(1.2);
+}
+
+.modal__title {
+    color: #EAB793;
+    font-family: 'Raleway', sans-serif;
+    font-size: calc(1.05rem + 1.05vw);
+}
+
+.modal__subtitle {
+    font-family: 'Figtree', sans-serif;
+    font-size: calc(0.8rem + 1.05vw);
+    font-weight: 200;
+}
+
+
 @media screen and (min-width: 30em){
     .cont > div {
         width: 80%;
@@ -166,6 +229,15 @@ hr {
 @media screen and (min-width: 62em){
     .cont > div {
         width: 60%;
+    }
+
+    .modal-container {
+        width: 30%;
+    }
+
+    .modal-close {
+        width: 3.2rem;
+        height: 3.2rem;
     }
 }
 

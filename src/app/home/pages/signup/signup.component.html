@@ -75,6 +75,13 @@
                     </div>
                     <button type="submit" class="form-button">Registrar</button>
                 </form>
+                <div *ngIf="modalCongrats" class="modal">
+                    <div class="modal-container">
+                        <button (click)="closeCongrats()" class="modal-close" type="button">X</button>
+                        <p class="modal__title">Felicidades 😁</p>
+                        <p class="modal__subtitle">El registro fue exitoso</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

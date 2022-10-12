@@ -13,6 +13,8 @@ export class SignupComponent {
     
     hide: boolean = true;
     showMessage: boolean = false;
+    userId: any;
+    modalCongrats: boolean = false;
     client: Cliente = {
       name: '',
       lastName: '',
@@ -44,8 +46,11 @@ export class SignupComponent {
           address: this.miFormulario.controls['ubicacion'].value,
           password: this.miFormulario.controls['contraseña'].value
         }
-        this.homeService.registro(this.client).subscribe( (_) => {
-          this.router.navigate(['/login']);;
+        this.homeService.registro(this.client).subscribe( (data:any) => {
+          this.userId = data.result.id;
+          localStorage.setItem('userId', this.userId);
+          localStorage.setItem('userType', 'user_client');
+          this.modalCongrats = true;
         })
       } else {
         this.showMessage = true;
@@ -55,5 +60,10 @@ export class SignupComponent {
     campoNoEsValido( field: string ) {
       return this.miFormulario.controls[field].errors 
              && this.miFormulario.controls[field].touched;
+    }
+
+    closeCongrats(): void {
+      this.modalCongrats = false;
+      this.router.navigate(['/main/homeclient']);
     }
 }

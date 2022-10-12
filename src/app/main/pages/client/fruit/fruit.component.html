@@ -1,22 +1,42 @@
 <div class="contenedor">
     <h2 class="titulo">Frutas:</h2>
     <div>
-        <input type="text" placeholder="Fruta a buscar">
-        <button>Buscar</button>
+        <app-fruit-input (onEnter)="search($event)" (onDebounce)="suggestion($event)" placeholder="Buscar fruta..."></app-fruit-input>
+        <ul *ngIf="displaySuggestions" class="list-group">
+            <li *ngFor="let fruit of fruitsSuggested" class="list-group-item list-group-item-action" (click)="searchSuggested(word)">
+                <a class="nav-link">{{ fruit.name }}</a>
+            </li>
+            <li class="list-group-item list-group-item-action" (click)="searchSuggested(word)">
+                <a class="nav-link">Buscar {{ word }}</a>
+            </li>
+        </ul>
     </div>
-    <!-- CARD -->
-    <div class="row">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+    <div *ngIf="mistakes" class="alert alert-danger">
+        No se encontró nada con el término <b>{{ word }}</b> 
+    </div>
+    <div class="row gap-5 gap-sm-0">
+        <div *ngFor="let fruit of fruits; let i=index" class="col-12 col-sm-6 col-md-4 col-lg-3">
             <mat-card class="card">
                 <span class="card__container__image">
-                    <img class="image" src="./../../../../assets/Fresa.png" alt="IMAGE">
+                    <img class="image" [src]="fruit.urlImage" alt="IMAGE">
                 </span>
                 <mat-card-header style="background-color: #BEBAB3;">
-                    <mat-card-title class="title-card">TITLE</mat-card-title>
-                    <mat-card-subtitle>PRECIO</mat-card-subtitle>
+                    <mat-card-title class="mat-card-title">{{ fruit.name }}</mat-card-title>
+                    <mat-card-subtitle class="mat-card-subtitle">S/ {{ fruit.price | number: '.2-2'}}Kg</mat-card-subtitle>
                 </mat-card-header>
-                <mat-card-actions style="text-align: center;">
-                    <button mat-button class="btn" type="button">Agregar</button>
+                <mat-card-actions class="actions">
+                    <div class="contenedor_grid">
+                        <div>
+                            <input type="text" class="cg__input" [value]="this.countArray[i]"  disabled>
+                        </div>
+                        <div style="text-align: center;">
+                            <button class="cg__plus" type="button" (click)="plus(i)">+</button>
+                            <button class="cg__less" type="button" (click)="less(i)" [disabled]="valid(i)">-</button>
+                        </div>
+                        <div>
+                            <button [className]="color(i)" type="button">Agregar</button>
+                        </div>
+                    </div>
                 </mat-card-actions>
             </mat-card>
         </div>

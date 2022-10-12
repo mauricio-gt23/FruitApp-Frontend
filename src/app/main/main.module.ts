@@ -11,6 +11,8 @@ import { JuiceComponent } from './pages/client/juice/juice.component';
 import { OrderComponent } from './pages/client/order/order.component';
 import { BuyComponent } from './pages/client/buy/buy.component';
 import { SaleComponent } from './pages/admin/sale/sale.component';
+import { FormsModule } from '@angular/forms';
+import { FruitInputComponent } from './components/shared/fruit-input.component';
 
 
 @NgModule({
@@ -22,13 +24,15 @@ import { SaleComponent } from './pages/admin/sale/sale.component';
     JuiceComponent,
     OrderComponent,
     BuyComponent,
-    SaleComponent
+    SaleComponent,
+    FruitInputComponent
   ],
   imports: [
     CommonModule,
     MainRoutingModule,
     MaterialModule,
-    SwiperModule
+    SwiperModule,
+    FormsModule
   ],
 })
 export class MainModule { }
