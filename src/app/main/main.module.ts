@@ -13,6 +13,8 @@ import { BuyComponent } from './pages/client/buy/buy.component';
 import { SaleComponent } from './pages/admin/sale/sale.component';
 import { FormsModule } from '@angular/forms';
 import { FruitInputComponent } from './components/shared/fruit-input.component';
+import { CountPipe } from './pipes/count.pipe';
+import { ProductComponent } from './components/product/product.component';
 
 
 @NgModule({
@@ -25,7 +27,10 @@ import { FruitInputComponent } from './components/shared/fruit-input.component';
     OrderComponent,
     BuyComponent,
     SaleComponent,
-    FruitInputComponent
+    FruitInputComponent,
+    ProductComponent,
+
+    CountPipe
   ],
   imports: [
     CommonModule,

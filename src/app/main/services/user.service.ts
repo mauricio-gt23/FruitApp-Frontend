@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   })
 export class UserService {
 
-    private baseUrl: string = "https://app-fruithost.herokuapp.com";
+    private baseUrl: string = "https://app-fruitback.herokuapp.com";
 
     constructor( private http: HttpClient ) { }
 

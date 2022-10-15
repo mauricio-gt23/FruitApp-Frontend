@@ -8,7 +8,7 @@ import { Cliente } from "../interfaces/cliente.interface";
   })
   export class HomeService {
   
-    private baseUrl: string = "https://app-fruithost.herokuapp.com";
+    private baseUrl: string = "https://app-fruitback.herokuapp.com";
 
     constructor( private http: HttpClient ) { }
 
