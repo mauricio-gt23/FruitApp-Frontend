@@ -1,5 +1,5 @@
 <div class="contenedor">
-    <h2 class="titulo">Frutas:</h2>
+    <h2 class="titulo">{{ title }}:</h2>
     <div>
         <app-fruit-input (onEnter)="search($event)" (onDebounce)="suggestion($event)" placeholder="Buscar fruta..."></app-fruit-input>
         <ul *ngIf="displaySuggestions" class="list-group">

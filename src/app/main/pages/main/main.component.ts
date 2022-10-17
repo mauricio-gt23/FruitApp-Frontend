@@ -1,8 +1,9 @@
-import { Component } from "@angular/core";
+import { Component, OnChanges, SimpleChanges } from "@angular/core";
 import { NavigationEnd, Router } from '@angular/router';
 import { Admin } from "../../interfaces/admin.interface";
 import { Client } from "../../interfaces/client.interface";
 import { User } from "../../interfaces/user.interface";
+import { LocalStorageService } from "../../services/local-storage.service";
 import { UserService } from "../../services/user.service";
 
 @Component({
@@ -10,7 +11,7 @@ import { UserService } from "../../services/user.service";
     templateUrl: './main.component.html',
     styleUrls: ['./main.component.css']
   })
-  export class MainComponent {
+  export class MainComponent  {
   
     userId: any;
     userType: any;
@@ -19,6 +20,7 @@ import { UserService } from "../../services/user.service";
     showLinkAdmin: boolean = false;
     showNav: boolean = false;
     currentRoute: string = '';
+    shoppingCart$ = this.localStorageService.shoppingCart$;
     user: User = {};
     client: Client = {
       email: '',
@@ -36,7 +38,7 @@ import { UserService } from "../../services/user.service";
       number: 0
     }
 
-    constructor(private route: Router, private userService: UserService) {
+    constructor(private route: Router, private userService: UserService, private localStorageService: LocalStorageService) {
 
       // OBTENER USER TYPE && USER ID
       this.userId = localStorage.getItem('userId');
@@ -89,7 +91,7 @@ import { UserService } from "../../services/user.service";
     }
     
     logOut(): void {
-      localStorage.clear();
+      this.localStorageService.clearStorage();
       this.route.navigate(["/login"]);
     }
   

@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Product } from '../../interfaces/product.interface';
 import { QuantityProduct } from '../../interfaces/quantity-product.interface';
+import { LocalStorageService } from '../../services/local-storage.service';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class ProductComponent {
 
     @Input() products: Product[] = [];
     @Input() countArray: number[] = [];
+    @Input() title: string = '';
     currentRoute: string = '';
 
     word: string = ''; 
@@ -25,7 +27,7 @@ export class ProductComponent {
         quantity: 0
     };
 
-    constructor(private productService: ProductService, private route: Router) {
+    constructor(private productService: ProductService, private route: Router, private localStorageService: LocalStorageService) {
         this.route.events.subscribe( event => {
             if(event instanceof NavigationEnd) {
               this.currentRoute = event.url;
@@ -68,20 +70,19 @@ export class ProductComponent {
 
     add( position:number ): void {
         for (let i = 0; i < this.products.length; i++) {
-        if (i === position) {
-            this.validCountArray(i);
-            this.qProduct = {
-                id: this.products[i].id,
-                quantity: this.countArray[i]
+            if (i === position) {
+                this.validCountArray(i);
+                this.qProduct = {
+                    id: this.products[i].id,
+                    quantity: this.countArray[i]
+                }
+                this.localStorageService.addToShoppingCart(this.qProduct);
+                this.qProduct = {
+                    id: 0,
+                    quantity: 0
+                }
+                this.countArray[i] = 1;
             }
-            this.shoppingCart.push(this.qProduct);
-            localStorage.setItem('shoppingCart', JSON.stringify(this.shoppingCart));
-            this.qProduct = {
-                id: 0,
-                quantity: 0
-            }
-            this.countArray[i] = 1;
-        }
         }
     }
 

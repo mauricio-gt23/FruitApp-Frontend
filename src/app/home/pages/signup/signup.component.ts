@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/main/services/local-storage.service';
 import { Cliente } from '../../interfaces/cliente.interface';
 import { HomeService } from '../../services/home.service';
 
@@ -33,7 +34,7 @@ export class SignupComponent {
       contraseña: [ this.client.password, [Validators.required]]
     });
 
-    constructor(private router: Router, private fb: FormBuilder, private homeService: HomeService) {
+    constructor(private router: Router, private fb: FormBuilder, private homeService: HomeService, private localStorageService: LocalStorageService) {
     }    
 
     signup(): void {
@@ -50,6 +51,7 @@ export class SignupComponent {
           this.userId = data.result.id;
           localStorage.setItem('userId', this.userId);
           localStorage.setItem('userType', 'user_client');
+          this.localStorageService.initialStorage();
           this.modalCongrats = true;
         })
       } else {

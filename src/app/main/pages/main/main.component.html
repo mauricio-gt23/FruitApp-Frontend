@@ -9,6 +9,9 @@
             </button>
         </div>
         <div class="hamburguer col-6 col-sm-6" *ngIf="showShoppingCart">
+            <span>
+                {{ (shoppingCart$ | async )?.length }}
+            </span>
             <button type="button" class="button-menu" (click)="goToBuy()">
                 <span class="ico-menu material-symbols-outlined">shopping_cart</span>
             </button>

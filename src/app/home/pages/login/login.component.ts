@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/main/services/local-storage.service';
 import { Usuario } from '../../interfaces/usuario.interface';
 import { HomeService } from '../../services/home.service';
 
@@ -18,7 +19,7 @@ export class LoginComponent {
   users: Usuario[] = [];
   @ViewChild('miFormulario') miFormulario!: NgForm;
 
-  constructor(private router: Router, private homeService: HomeService) {
+  constructor(private router: Router, private homeService: HomeService, private localStorageService: LocalStorageService) {
     this.homeService.login().subscribe( (data: any) => {
       this.users = data.result.content
     });
@@ -28,6 +29,7 @@ export class LoginComponent {
     if (this.filtro(this.miFormulario.value.email, this.miFormulario.value.password)) {
       localStorage.setItem('userId', this.userId);
       localStorage.setItem('userType', this.userType);
+      this.localStorageService.initialStorage();
       if (this.userType == 'user_client') {
         this.router.navigate(['/main/homeclient']);
       } else {
