@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Product } from "../interfaces/product.interface";
-import { QuantityProduct } from "../interfaces/quantity-product.interface";
+import { Item } from "../interfaces/item.interface";
 
 const SHOPPING_CART = 'shoppingCart';
 
@@ -10,7 +9,7 @@ const SHOPPING_CART = 'shoppingCart';
   })
 export class LocalStorageService {
 
-  private shoppingCartSubject = new BehaviorSubject<QuantityProduct[]>([]);
+  private shoppingCartSubject = new BehaviorSubject<Item[]>([]);
   shoppingCart$ = this.shoppingCartSubject.asObservable();
 
   constructor() {
@@ -35,23 +34,23 @@ export class LocalStorageService {
     }
   }
 
-  addToShoppingCart( qProduct: QuantityProduct ): void {
+  addToShoppingCart( item: Item ): void {
     try {
       const currentShoppingCart = this.getShoppingCart();
-      localStorage.setItem(SHOPPING_CART, JSON.stringify([...currentShoppingCart, qProduct]));
-      this.shoppingCartSubject.next([...currentShoppingCart, qProduct]);
+      localStorage.setItem(SHOPPING_CART, JSON.stringify([...currentShoppingCart, item]));
+      this.shoppingCartSubject.next([...currentShoppingCart, item]);
     } catch (error) {
       console.log("Error saving localStorage", error);
       alert("Error");
     }
   }
 
-  removeFromShoppingCart( id:number ): void {
+  removeFromShoppingCart( position:number ): void {
     try {
       const currentsShoppingCart = this.getShoppingCart();
-      const products = currentsShoppingCart.filter((item: { id: any; }) => item.id !== id);
-      localStorage.setItem(SHOPPING_CART, JSON.stringify([...products]));
-      this.shoppingCartSubject.next([...products]);
+      currentsShoppingCart.splice(position, 1);
+      localStorage.setItem(SHOPPING_CART, JSON.stringify([...currentsShoppingCart]));
+      this.shoppingCartSubject.next([...currentsShoppingCart]);
     } catch (error) {
       console.log("Error removing localStorage", error);
       alert("Error");

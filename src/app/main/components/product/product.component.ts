@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { Item } from '../../interfaces/item.interface';
 import { Product } from '../../interfaces/product.interface';
-import { QuantityProduct } from '../../interfaces/quantity-product.interface';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { ProductService } from '../../services/product.service';
 
@@ -15,17 +15,14 @@ export class ProductComponent {
     @Input() products: Product[] = [];
     @Input() countArray: number[] = [];
     @Input() title: string = '';
+    @Input() placeHolder: string = '';
     currentRoute: string = '';
 
     word: string = ''; 
+    item: Item = {};
     productsSuggested: Product[] = [];
     mistakes: boolean = false;
-    shoppingCart: QuantityProduct[] = [];
     displaySuggestions: boolean = false;
-    qProduct: QuantityProduct = {
-        id: 0,
-        quantity: 0
-    };
 
     constructor(private productService: ProductService, private route: Router, private localStorageService: LocalStorageService) {
         this.route.events.subscribe( event => {
@@ -39,7 +36,6 @@ export class ProductComponent {
         for (let i = 0; i < this.countArray.length; i++) {
         if (i === position) {
             if (this.countArray[i] === 0) {
-            console.log(this.countArray[i]);
             this.countArray[i] = 1;
             }
             this.countArray[i] += 1; 
@@ -72,16 +68,13 @@ export class ProductComponent {
         for (let i = 0; i < this.products.length; i++) {
             if (i === position) {
                 this.validCountArray(i);
-                this.qProduct = {
-                    id: this.products[i].id,
-                    quantity: this.countArray[i]
-                }
-                this.localStorageService.addToShoppingCart(this.qProduct);
-                this.qProduct = {
-                    id: 0,
-                    quantity: 0
-                }
-                this.countArray[i] = 1;
+                this.productService.getByIdProduct(this.products[i].id).subscribe( (product) => {
+                    this.item.product = product.result;
+                    this.item.quantity = this.countArray[i];
+                    this.localStorageService.addToShoppingCart(this.item);
+                    this.item = {};
+                    this.countArray[i] = 1;
+                });
             }
         }
     }

@@ -11,6 +11,11 @@ export class ProductService {
 
     constructor( private http: HttpClient ) { }
 
+    // Product
+    getByIdProduct(id: any) : Observable<any>{
+        return this.http.get<any>(`${this.baseUrl}/products/${id}`);
+    }
+
     // Fruit
     getAllFruit(): Observable<any> {
         return this.http.get<any>(`${this.baseUrl}/fruits`);

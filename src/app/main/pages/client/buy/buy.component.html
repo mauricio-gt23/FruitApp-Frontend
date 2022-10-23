@@ -1,3 +1,57 @@
 <div>
-    buy!!!
+    <div>
+        <h2>Lista de Productos:</h2>
+    </div>
+    <div *ngIf="(shoppingCart$ | async)?.length === 0; else shopping">
+        <p>El carrito de compras está vacío</p>
+    </div>
+    <ng-template #shopping> 
+        <mat-stepper #stepper>
+            <mat-step label="Carro" state="cart">
+                <div class="stepper-container">
+                    <span class="stepper-container__title">Producto</span>
+                    <span class="stepper-container__title">Cantidad</span>
+                    <span class="stepper-container__title">Precio</span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div *ngFor="let item of (shoppingCart$ | async); let i=index" class="shoppingCart">
+                    <div>
+                        <p>{{ item.product?.name }}</p>
+                        <span class="container__img">
+                            <img [src]="item.product?.urlImage" [alt]="item.product?.name" class="image">
+                        </span>
+                    </div>
+                    <div>
+                        <p>{{ item.quantity }}</p>
+                    </div>
+                    <div>
+                        <p>{{ item.product?.price }}</p>
+                    </div>
+                    <div>
+                        <button (click)="remove(i)">X</button>
+                    </div>
+                </div>
+                <div>
+                    total a pagar: 
+                </div>
+                <div>
+                    <button matStepperNext>Next</button>
+                </div>
+            </mat-step>
+            <mat-step label="Pago" state="pay">
+    
+            </mat-step>
+    
+            <!-- ICON OVERRIDE -->
+            <ng-template matStepperIcon="cart">
+                <mat-icon>shopping_cart</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="pay">
+                <mat-icon>payments</mat-icon>
+            </ng-template>
+        </mat-stepper>
+    </ng-template>
 </div>

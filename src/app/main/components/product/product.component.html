@@ -1,7 +1,7 @@
 <div class="contenedor">
     <h2 class="titulo">{{ title }}:</h2>
     <div>
-        <app-fruit-input (onEnter)="search($event)" (onDebounce)="suggestion($event)" placeholder="Buscar fruta..."></app-fruit-input>
+        <app-fruit-input (onEnter)="search($event)" (onDebounce)="suggestion($event)" [placeholder]="placeHolder"></app-fruit-input>
         <ul *ngIf="displaySuggestions" class="list-group">
             <li *ngFor="let fruit of productsSuggested" class="list-group-item list-group-item-action" (click)="searchSuggested(word)">
                 <a class="nav-link">{{ fruit.name }}</a>
