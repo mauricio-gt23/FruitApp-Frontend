@@ -5,44 +5,92 @@
     <div *ngIf="(shoppingCart$ | async)?.length === 0; else shopping">
         <p>El carrito de compras está vacío</p>
     </div>
-    <ng-template #shopping> 
+    <ng-template #shopping>
         <mat-stepper #stepper>
+            <!-- STEP 1 -->
             <mat-step label="Carro" state="cart">
                 <div class="stepper-container">
-                    <span class="stepper-container__title">Producto</span>
-                    <span class="stepper-container__title">Cantidad</span>
-                    <span class="stepper-container__title">Precio</span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span class="stepper-container__title item__container">Producto</span>
+                    <span class="stepper-container__title item__container">Cantidad</span>
+                    <span class="stepper-container__title item__container">Precio</span>
+                    <span class="item__container opacity-0">_</span>
                 </div>
                 <div *ngFor="let item of (shoppingCart$ | async); let i=index" class="shoppingCart">
-                    <div>
-                        <p>{{ item.product?.name }}</p>
+                    <div class="item__container">
+                        <p class="item__container-text">{{ item.product?.name }}</p>
                         <span class="container__img">
                             <img [src]="item.product?.urlImage" [alt]="item.product?.name" class="image">
                         </span>
                     </div>
-                    <div>
-                        <p>{{ item.quantity }}</p>
+                    <div class="item__container">
+                        <p class="item__container-text">{{ item.quantity }}</p>
                     </div>
-                    <div>
-                        <p>{{ item.product?.price }}</p>
+                    <div class="item__container">
+                        <p class="item__container-text">{{ item.product?.price }}</p>
                     </div>
-                    <div>
-                        <button (click)="remove(i)">X</button>
+                    <div class="item__container">
+                        <button class="item__container-button" (click)="remove(i)">
+                            <span class="material-symbols-outlined">
+                                delete
+                            </span>
+                        </button>
                     </div>
                 </div>
-                <div>
-                    total a pagar: 
-                </div>
-                <div>
-                    <button matStepperNext>Next</button>
+                <div class="more">
+                    <span class="more__text">Total: S/. {{ totalPrice | number: '.2-2' }}</span>
+                    <button class="more__button" matStepperNext>Siguiente</button>
                 </div>
             </mat-step>
+            <!-- STEP 2 -->
             <mat-step label="Pago" state="pay">
-    
+                <h2 class="title-pay">Datos de Pago</h2>
+                <form (ngSubmit)="pay()" autocomplete="off" [formGroup]="miForm" class="form-pay">
+                    <div>
+                        <!-- Name -->
+                        <label for="name" class="form-pay__label">Nombre del Títular: </label>
+                        <div>
+                            <input formControlName="name" type="text" id="name" class="form-pay__input-name">
+                            <br>
+                            <p *ngIf="fieldInvalid('name')" class="form-pay__span">Escribir Titular de la Tarjeta</p>
+                        </div>
+                    </div>
+                   <div>
+                        <!-- Number -->
+                        <label for="number" class="form-pay__label">Número de la tarjeta: </label>
+                        <div style="position: relative;">
+                            <input formControlName="number" type="number" id="number" class="form-pay__input-number" placeholder="XXXX-XXXX-XXXX-XXXX">
+                            <i class="fa-brands fa-cc-visa visa"></i>
+                        </div>
+                        <p *ngIf="fieldInvalid('number')" class="form-pay__span">Escribir Número de la tarjeta</p>
+                   </div> 
+                    <div class="divider">
+                        <!-- Expiration -->
+                        <div style="width: 70%;">
+                            <label for="expiration" class="form-pay__label">Fecha de Vencimiento: </label>
+                            <div>
+                                <input formControlName="expiration" type="number" id="expiration" class="form-pay__input-expiration" placeholder="MM/DD">
+                                <br>
+                                <p *ngIf="fieldInvalid('expiration')" class="form-pay__span">Escribir Número de la tarjeta</p>
+                            </div>
+                        </div>
+                        <!-- CVV -->
+                        <div style="width: 30%;">
+                            <label for="cvv" class="form-pay__label">CVV: </label>
+                            <div>
+                                <input formControlName="cvv" type="number" id="cvv" class="form-pay__input-cvv">
+                                <br>
+                                <p *ngIf="fieldInvalid('cvv')" class="form-pay__span">Escribir CVV</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="showMessage" style="text-align: center;">
+                        <p class="form-pay__span">Completar todos los campos</p>
+                    </div>
+                    <div class="more">
+                        <span class="more__text">Total: S/. {{ totalPrice | number: '.2-2' }}</span>
+                        <button type="submit" class="more__button">Comprar 🛒</button>
+                    </div>
+                </form>
             </mat-step>
     
             <!-- ICON OVERRIDE -->

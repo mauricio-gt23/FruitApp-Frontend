@@ -57,6 +57,15 @@ export class LocalStorageService {
     }
   }
 
+  resetShoppingCart(): void {
+    try {
+      localStorage.setItem(SHOPPING_CART, JSON.stringify([]));
+      this.getShoppingCart();
+    } catch (error) {
+      console.log("Error cleaning shoppingCart", error);
+    }
+  }
+
   clearStorage(): void {
     try {
       localStorage.clear();

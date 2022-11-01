@@ -11,33 +11,36 @@ import { JuiceComponent } from './pages/client/juice/juice.component';
 import { OrderComponent } from './pages/client/order/order.component';
 import { BuyComponent } from './pages/client/buy/buy.component';
 import { SaleComponent } from './pages/admin/sale/sale.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FruitInputComponent } from './components/shared/fruit-input.component';
 import { CountPipe } from './pipes/count.pipe';
 import { ProductComponent } from './components/product/product.component';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
 
 
 @NgModule({
   declarations: [
-    MainComponent,
-    HomeClientComponent,
-    HomeAdminComponent,
-    FruitComponent,
-    JuiceComponent,
-    OrderComponent,
     BuyComponent,
-    SaleComponent,
+    FruitComponent,
     FruitInputComponent,
+    HomeAdminComponent,
+    HomeClientComponent,
+    JuiceComponent,
+    MainComponent,
+    OrderComponent,
     ProductComponent,
+    SaleComponent,
+    SnackbarComponent,
 
     CountPipe
   ],
   imports: [
     CommonModule,
+    FormsModule,
     MainRoutingModule,
     MaterialModule,
+    ReactiveFormsModule,
     SwiperModule,
-    FormsModule
   ],
 })
 export class MainModule { }

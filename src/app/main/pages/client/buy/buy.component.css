@@ -1,6 +1,8 @@
 /* STEPPER */
 .stepper-container {
+    padding: 1vh 1vw;
     width: 100%;
+    text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,17 +10,36 @@
 
 .stepper-container__title {
     font-family: 'Raleway', sans-serif;
-    font-size: calc(0.75rem + 0.75vh);
+    font-size: calc(0.65rem + 0.75vh);
+}
+
+.item__container {
+    width: 20%;
 }
 
 .shoppingCart {
+    padding: 1vh 1vw;
     margin-bottom: 2vh;
     width: 100%;
+    text-align: center;
+    border: 2px solid #590B8F;
+    border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid black;
+}
+
+.item__container-text {
+    margin: 0;
+    font-family: 'Patua One', cursive;
+    font-size: calc(0.65rem + 0.80vh);
+}
+
+.item__container-button {
+    all: unset;
     border-radius: 5px;
+    color: red;
+    cursor: pointer;
 }
 
 .container__img {
@@ -31,4 +52,101 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+
+.more {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.more__text {
+    text-align: center;
+    padding: 1vh 1vw;
+    color: #9E650C;
+    font-size: calc(0.65rem + 0.75vh);
+    font-family: 'Patua One', cursive;
+    font-weight: bold;
+}
+
+.more__button {
+    color: #373737;
+    border: 1px solid #E18601;
+    border-radius: 5px;
+    background-color: #F19004;
+    font-family: 'Patua One', cursive;
+}
+
+/* STEP 2 */
+.title-pay {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: calc(1.2rem + 1vh);
+    text-align: center;
+}
+
+.form-pay {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-pay > div {
+    margin-top: 2vh;
+}
+
+.form-pay__label {
+    color: #0C4EB9;
+    font-family: 'Raleway', sans-serif;
+    font-size: calc(0.65rem + 0.75vh);
+}
+
+.form-pay__input-name {
+    padding: .4rem .5rem;
+    width: 100%;
+    color: #3A3D42;
+    font-family: 'Raleway', sans-serif;
+}
+
+.form-pay__input-number {
+    padding: .4rem .5rem;
+    padding-right: 2rem;
+    width: 100%;
+    line-height: 1.7;
+    color: #3A3D42;
+    font-family: 'Raleway', sans-serif;
+}
+
+.form-pay__input-expiration {
+    padding: .4rem .5rem;
+    width: 100%;
+    color: #3A3D42;
+    font-family: 'Raleway', sans-serif;
+}
+
+.form-pay__input-cvv {
+    padding: .4rem .5rem;
+    width: 100%;
+    color: #3A3D42;
+    font-family: 'Raleway', sans-serif;
+}
+
+.form-pay__span {
+    margin: 0;
+    color: red;
+    font-family: 'Figtree', sans-serif;
+    font-size: calc(0.80rem + 0.3vw);
+    font-weight: bold;
+}
+
+.visa {
+    position: absolute;
+    right: .6rem;
+    top: .8rem;
+}
+
+.divider {
+    display: flex;
+    gap: 5vw;
 }
