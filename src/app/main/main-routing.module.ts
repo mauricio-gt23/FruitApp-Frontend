@@ -7,6 +7,7 @@ import { BuyComponent } from './pages/client/buy/buy.component';
 import { FruitComponent } from './pages/client/fruit/fruit.component';
 import { HomeClientComponent } from './pages/client/home/homeclient.component';
 import { JuiceComponent } from './pages/client/juice/juice.component';
+import { OrderDetailComponent } from './pages/client/order-detail/order-detail.component';
 import { OrderComponent } from './pages/client/order/order.component';
 import { MainComponent } from './pages/main/main.component';
 
@@ -30,6 +31,10 @@ const routes: Routes = [
             {
                 path: 'myorders',
                 component: OrderComponent
+            },
+            {
+                path: 'myorders/:id',
+                component: OrderDetailComponent
             },
             {
                 path: 'buy',

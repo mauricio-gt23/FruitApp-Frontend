@@ -16,6 +16,8 @@ import { FruitInputComponent } from './components/shared/fruit-input.component';
 import { CountPipe } from './pipes/count.pipe';
 import { ProductComponent } from './components/product/product.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { StatusPipe } from './pipes/status.pipe';
+import { OrderDetailComponent } from './pages/client/order-detail/order-detail.component';
 
 
 @NgModule({
@@ -28,11 +30,13 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
     JuiceComponent,
     MainComponent,
     OrderComponent,
+    OrderDetailComponent,
     ProductComponent,
     SaleComponent,
     SnackbarComponent,
 
-    CountPipe
+    CountPipe,
+    StatusPipe
   ],
   imports: [
     CommonModule,
