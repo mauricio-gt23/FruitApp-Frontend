@@ -1,3 +1,37 @@
 <div>
-    order!!!
+  <div>
+    <h2>Lista de Compras: </h2>
+  </div>
+  <div>
+    <label for="number"></label>
+    <input id="number" type="text" placeholder="N° de pedido">
+  </div>
+  <div class="table-container">
+    <div>
+      <div class="table-container-title">
+        <div class="title item__container">N° pedido</div>
+        <div class="title item__container">h</div>
+        <div class="title item__container">Estado</div>
+        <div class="item__container opacity-0">_</div>
+      </div>
+      <div *ngFor="let order of orders; let i=index" class="orders">
+        <div class="order-item__container">
+          <p class="item__container-text">{{ order.id }}</p>
+        </div>
+        <div class="order-item__container">
+          <p class="item__container-text">{{ order.createdAt | date }}</p>
+        </div>
+        <div class="order-item__container">
+          <p [className]= "color(order.status)">{{ order.status | status }}</p>
+        </div>
+        <div class="order-item__container">
+          <button class="item__container-button" (click)="seeDetail(order.id)">
+            <span class="material-symbols-outlined">
+              zoom_in
+            </span>
+          </button>
+        </div>
+      <div>
+    </div>
+  </div>
 </div>

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Sale } from "../interfaces/sale.interface";
 import { SaleDetail } from "../interfaces/sale-detail.interface";
@@ -15,6 +15,10 @@ export class SaleService {
     constructor( private http: HttpClient ) { }
 
     // Sale
+    getSaleByUserId(userId: any): Observable<any> {
+        return this.http.get(`${this.baseUrl}/sales`, { params: new HttpParams().set('userId', userId)})
+    }
+
     postSale( sale: Sale ): Observable<any> {
         return this.http.post(`${this.baseUrl}/sales`, sale);
     }
