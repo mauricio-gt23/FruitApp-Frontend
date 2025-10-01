@@ -17,14 +17,32 @@
             </button>
         </div>
         <!-- NAV WEB (CANVAS)-->
-        <div class="nav col-12 col-md-4">
-            <span>Frutas</span>
-            <span>Jugos</span>
-            <span>Mis compras</span>
+        <div class="nav-web col-12 col-md-4">
+            <a class="nav-item" routerLink="./fruits">
+                <span class="material-symbols-outlined nav-icon">nutrition</span>
+                <span>Frutas</span>
+            </a>
+            <a class="nav-item" routerLink="./juices">
+                <span class="material-symbols-outlined nav-icon">local_bar</span>
+                <span>Jugos</span>
+            </a>
+            <a class="nav-item" routerLink="./myorders">
+                <span class="material-symbols-outlined nav-icon">receipt_long</span>
+                <span>Mis compras</span>
+            </a>
         </div>
-        <div class="nav col-12 col-md-4">
-            <span>shopping cart</span>
-            <span>profile</span>
+        <div class="nav-web col-12 col-md-4">
+            <a class="nav-item" (click)="goToBuy()">
+                <span class="material-symbols-outlined nav-icon">shopping_cart</span>
+                <span>Carrito</span>
+                <span class="cart-badge" *ngIf="(shoppingCart$ | async)?.length">
+                    {{ (shoppingCart$ | async)?.length }}
+                </span>
+            </a>
+            <a class="nav-item">
+                <span class="material-symbols-outlined nav-icon">person</span>
+                <span>Perfil</span>
+            </a>
         </div>
         <!-- NAV MOVIL (CANVAS) -->
         <nav class="off-canvas-menu" *ngIf="showNav">

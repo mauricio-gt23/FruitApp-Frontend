@@ -49,6 +49,59 @@
     font-size: 7vw;
 }
 
+/* Estilos para el NAV WEB */
+.nav-web {
+    display: none; /* Oculto por defecto en móviles */
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+/* Mostrar NAV WEB solo en pantallas medianas y grandes */
+@media (min-width: 768px) {
+    .nav-web {
+        display: flex;
+    }
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    color: #1b4332;
+    text-decoration: none;
+}
+
+.nav-item:hover {
+    background-color: #52b788;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.cart-badge {
+    position: absolute;
+    top: 0;
+    right: -10px;
+    background-color: #ff4757;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75rem;
+}
+
 .nav {
     display: none;
 }
