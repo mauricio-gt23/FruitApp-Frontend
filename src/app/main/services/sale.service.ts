@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Sale } from "../interfaces/sale.interface";
 import { SaleDetail } from "../interfaces/sale-detail.interface";
+import { environment } from '../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
   })
 export class SaleService {
 
-    private baseUrl: string = "https://app-fruitback.herokuapp.com";
+    private baseUrl: string = environment.HOST_API;
 
     constructor( private http: HttpClient ) { }
 
